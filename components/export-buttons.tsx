@@ -5,11 +5,11 @@ import { Download, FileText, FileSpreadsheet } from 'lucide-react';
 import * as XLSX from 'xlsx';
 import jsPDF from 'jspdf';
 
-interface ExportButtonsProps<TData> {
+interface IExportButtonsProps<TData> {
   table: Table<TData>;
 }
 
-export function ExportButtons<TData>({ table }: ExportButtonsProps<TData>) {
+export function ExportButtons<TData>({ table }: IExportButtonsProps<TData>) {
   const exportToExcel = () => {
     const selectedRows = table.getSelectedRowModel().rows;
     const visibleColumns = table.getVisibleLeafColumns();

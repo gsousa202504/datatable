@@ -1,12 +1,12 @@
 import React from 'react';
 import { EnhancedDataTable } from '@/components/data-table/enhanced-data-table';
-import { DataTableColumnConfig } from '@/hooks/use-data-table-columns';
+import { IDataTableColumnConfig } from '@/hooks/use-data-table-columns';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Package, Plus } from 'lucide-react';
 
 // Mock product data type
-interface Product {
+interface IProduct {
   id: string;
   name: string;
   category: string;
@@ -18,9 +18,9 @@ interface Product {
 }
 
 // Generate large dataset for virtualization demo
-const generateProducts = (count: number): Product[] => {
+const generateProducts = (count: number): IProduct[] => {
   const categories = ['Electronics', 'Clothing', 'Books', 'Home & Garden', 'Sports', 'Toys'];
-  const statuses: Product['status'][] = ['in_stock', 'low_stock', 'out_of_stock'];
+  const statuses: IProduct['status'][] = ['in_stock', 'low_stock', 'out_of_stock'];
   
   return Array.from({ length: count }, (_, i) => ({
     id: `product-${i + 1}`,
@@ -38,7 +38,7 @@ export function ProductsTableVirtualized() {
   // Generate 10,000 products for virtualization demo
   const products = React.useMemo(() => generateProducts(10000), []);
   
-  const columns: DataTableColumnConfig<Product>[] = [
+  const columns: IDataTableColumnConfig<IProduct>[] = [
     {
       id: 'sku',
       header: 'SKU',

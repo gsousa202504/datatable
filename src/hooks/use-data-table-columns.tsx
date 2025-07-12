@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 import { ColumnDef } from '@tanstack/react-table';
 import { Checkbox } from '@/components/ui/checkbox';
-import { RowActions, RowActionItem } from '@/components/data-table/row-actions';
+import { RowActions, IRowActionItem } from '@/components/data-table/row-actions';
 
-export interface DataTableColumnConfig<TData> {
+export interface IDataTableColumnConfig<TData> {
   id: string;
   header: string;
   accessorKey?: keyof TData;
@@ -25,11 +25,11 @@ export interface DataTableColumnConfig<TData> {
   };
 }
 
-export interface UseDataTableColumnsProps<TData> {
-  columns: DataTableColumnConfig<TData>[];
+export interface IUseDataTableColumnsProps<TData> {
+  columns: IDataTableColumnConfig<TData>[];
   enableRowSelection?: boolean;
   enableRowActions?: boolean;
-  rowActions?: RowActionItem<TData>[];
+  rowActions?: IRowActionItem<TData>[];
   onRowAction?: (action: string, row: TData) => void;
   getRowId?: (row: TData, index: number) => string;
 }
@@ -41,7 +41,7 @@ export function useDataTableColumns<TData>({
   rowActions = [],
   onRowAction,
   getRowId,
-}: UseDataTableColumnsProps<TData>) {
+}: IUseDataTableColumnsProps<TData>) {
   return useMemo<ColumnDef<TData>[]>(() => {
     const tableColumns: ColumnDef<TData>[] = [];
 

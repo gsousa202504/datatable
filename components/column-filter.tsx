@@ -9,7 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Column } from '@tanstack/react-table';
 import { Check, ChevronDown, X } from 'lucide-react';
 
-interface ColumnFilterProps<TData, TValue> {
+interface IColumnFilterProps<TData, TValue> {
   column: Column<TData, TValue>;
   filterType?: 'text' | 'select';
   filterOptions?: { label: string; value: string }[];
@@ -19,7 +19,7 @@ export function ColumnFilter<TData, TValue>({
   column,
   filterType = 'text',
   filterOptions = [],
-}: ColumnFilterProps<TData, TValue>) {
+}: IColumnFilterProps<TData, TValue>) {
   const filterValue = column.getFilterValue() as string | string[];
 
   if (filterType === 'text') {

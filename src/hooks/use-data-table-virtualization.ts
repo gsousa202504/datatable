@@ -2,7 +2,7 @@ import { useVirtualizer } from '@tanstack/react-virtual';
 import { Table } from '@tanstack/react-table';
 import { useRef } from 'react';
 
-export interface UseDataTableVirtualizationProps {
+export interface IUseDataTableVirtualizationProps {
   enabled?: boolean;
   estimateSize?: number;
   overscan?: number;
@@ -10,7 +10,7 @@ export interface UseDataTableVirtualizationProps {
 
 export function useDataTableVirtualization<TData>(
   table: Table<TData>,
-  { enabled = false, estimateSize = 50, overscan = 5 }: UseDataTableVirtualizationProps = {}
+  { enabled = false, estimateSize = 50, overscan = 5 }: IUseDataTableVirtualizationProps = {}
 ) {
   const tableContainerRef = useRef<HTMLDivElement>(null);
 

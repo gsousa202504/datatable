@@ -16,18 +16,18 @@ import {
   FileText,
   File,
 } from 'lucide-react';
-import { useDataTable, UseDataTableProps } from '@/hooks/use-data-table';
-import { useDataTableColumns, UseDataTableColumnsProps, DataTableColumnConfig } from '@/hooks/use-data-table-columns';
-import { useDataTableVirtualization, UseDataTableVirtualizationProps } from '@/hooks/use-data-table-virtualization';
+import { useDataTable, IUseDataTableProps } from '@/hooks/use-data-table';
+import { useDataTableColumns, IUseDataTableColumnsProps, IDataTableColumnConfig } from '@/hooks/use-data-table-columns';
+import { useDataTableVirtualization, IUseDataTableVirtualizationProps } from '@/hooks/use-data-table-virtualization';
 import { useDataTableExport } from '@/hooks/use-data-table-export';
 import { ColumnHeader } from './column-header';
 import { ColumnFilter } from './column-filter';
 
-export interface EnhancedDataTableProps<TData> 
-  extends Omit<UseDataTableProps<TData>, 'columns'>,
-    Omit<UseDataTableColumnsProps<TData>, 'columns'>,
-    UseDataTableVirtualizationProps {
-  columns: DataTableColumnConfig<TData>[];
+export interface IEnhancedDataTableProps<TData> 
+  extends Omit<IUseDataTableProps<TData>, 'columns'>,
+    Omit<IUseDataTableColumnsProps<TData>, 'columns'>,
+    IUseDataTableVirtualizationProps {
+  columns: IDataTableColumnConfig<TData>[];
   
   // UI Configuration
   className?: string;
@@ -115,7 +115,7 @@ export function EnhancedDataTable<TData>({
   
   // Row configuration
   getRowProps,
-}: EnhancedDataTableProps<TData>) {
+}: IEnhancedDataTableProps<TData>) {
   
   // Generate table columns with selection and actions
   const tableColumns = useDataTableColumns({

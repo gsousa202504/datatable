@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { MoreHorizontal } from 'lucide-react';
 
-export interface RowActionItem<TData = unknown> {
+export interface IRowActionItem<TData = unknown> {
   action: string;
   label: string;
   icon?: React.ReactNode;
@@ -18,13 +18,13 @@ export interface RowActionItem<TData = unknown> {
   render?: () => React.ReactNode; // custom render function
 }
 
-interface RowActionsProps<TData> {
+interface IRowActionsProps<TData> {
   row: TData;
-  actions?: RowActionItem<TData>[];
+  actions?: IRowActionItem<TData>[];
   preferRender?: boolean; // flag to prefer render when available
 }
 
-export function RowActions<TData>({ row, actions, preferRender }: RowActionsProps<TData>) {
+export function RowActions<TData>({ row, actions, preferRender }: IRowActionsProps<TData>) {
   if (!actions || actions.length === 0) return null;
   return (
     <DropdownMenu>

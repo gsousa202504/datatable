@@ -2,15 +2,15 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/router';
 import { EnhancedDataTable } from '@/components/data-table/enhanced-data-table';
-import { DataTableColumnConfig } from '@/hooks/use-data-table-columns';
-import { RowActionItem } from '@/components/data-table/row-actions';
+import { IDataTableColumnConfig } from '@/hooks/use-data-table-columns';
+import { IRowActionItem } from '@/components/data-table/row-actions';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Edit, Trash2, Eye, UserPlus } from 'lucide-react';
 
 // Mock user data type
-interface User {
+interface IUser {
   id: string;
   name: string;
   email: string;
@@ -28,17 +28,17 @@ const fetchUsers = async (params: {
   sorting?: { id: string; desc: boolean }[];
   filters?: { id: string; value: any }[];
   globalFilter?: string;
-}): Promise<{ data: User[]; totalCount: number }> => {
+}): Promise<{ data: IUser[]; totalCount: number }> => {
   // Simulate API delay
   await new Promise(resolve => setTimeout(resolve, 1000));
   
   // Mock data
-  const mockUsers: User[] = Array.from({ length: 100 }, (_, i) => ({
+  const mockUsers: IUser[] = Array.from({ length: 100 }, (_, i) => ({
     id: `user-${i + 1}`,
     name: `User ${i + 1}`,
     email: `user${i + 1}@example.com`,
-    role: ['admin', 'user', 'moderator'][i % 3] as User['role'],
-    status: ['active', 'inactive', 'pending'][i % 3] as User['status'],
+    role: ['admin', 'user', 'moderator'][i % 3] as IUser['role'],
+    status: ['active', 'inactive', 'pending'][i % 3] as IUser['status'],
     avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${i}`,
     createdAt: new Date(Date.now() - Math.random() * 10000000000).toISOString(),
     lastLogin: Math.random() > 0.3 ? new Date(Date.now() - Math.random() * 1000000000).toISOString() : undefined,
@@ -86,7 +86,7 @@ export function UsersTableExample() {
   });
 
   // Column definitions
-  const columns: DataTableColumnConfig<User>[] = [
+  const columns: IDataTableColumnConfig<IUser>[] = [
     {
       id: 'avatar',
       header: '',
@@ -178,7 +178,7 @@ export function UsersTableExample() {
   ];
 
   // Row actions
-  const rowActions: RowActionItem<User>[] = [
+  const rowActions: IRowActionItem<IUser>[] = [
     {
       action: 'view',
       label: 'Visualizar',
@@ -211,11 +211,11 @@ export function UsersTableExample() {
     },
   ];
 
-  const handleRowAction = (action: string, user: User) => {
+  const handleRowAction = (action: string, user: IUser) => {
     console.log(`Action: ${action}`, user);
   };
 
-  const handleSelectionChange = (selectedRows: User[]) => {
+  const handleSelectionChange = (selectedRows: IUser[]) => {
     console.log('Selected users:', selectedRows);
   };
 

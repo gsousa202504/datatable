@@ -18,7 +18,7 @@ import {
   Updater,
 } from '@tanstack/react-table';
 
-export interface UseDataTableProps<TData> {
+export interface IUseDataTableProps<TData> {
   data: TData[];
   columns: ColumnDef<TData>[];
   
@@ -56,7 +56,7 @@ export interface UseDataTableProps<TData> {
   };
 }
 
-export interface DataTableState {
+export interface IDataTableState {
   pagination: PaginationState;
   sorting: SortingState;
   columnFilters: ColumnFiltersState;
@@ -67,7 +67,7 @@ export interface DataTableState {
   globalFilter: string;
 }
 
-const defaultInitialState: DataTableState = {
+const defaultInitialState: IDataTableState = {
   pagination: { pageIndex: 0, pageSize: 10 },
   sorting: [],
   columnFilters: [],
@@ -96,9 +96,9 @@ export function useDataTable<TData>({
   enableStatePersistence = true,
   storageKey = 'data-table-state',
   initialState = {},
-}: UseDataTableProps<TData>) {
+}: IUseDataTableProps<TData>) {
   // Load initial state from localStorage if persistence is enabled
-  const [state, setState] = useState<DataTableState>(() => {
+  const [state, setState] = useState<IDataTableState>(() => {
     if (enableStatePersistence) {
       try {
         const saved = localStorage.getItem(storageKey);

@@ -1,6 +1,6 @@
-import { RowActionItem } from './row-actions';
+import { IRowActionItem } from './row-actions';
 
-export interface DataTableColumn<T> {
+export interface IDataTableColumn<T> {
   id: string;
   header: string;
   accessorKey?: keyof T;
@@ -22,9 +22,9 @@ export interface DataTableColumn<T> {
   };
 }
 
-export interface DataTableProps<T> {
+export interface IDataTableProps<T> {
   data: T[];
-  columns: DataTableColumn<T>[];
+  columns: IDataTableColumn<T>[];
   
   // Server-side support
   pageCount?: number;
@@ -39,7 +39,7 @@ export interface DataTableProps<T> {
   
   // Row actions
   enableRowActions?: boolean;
-  rowActions?: RowActionItem<T>[];
+  rowActions?: IRowActionItem<T>[];
   onRowAction?: (action: string, row: T) => void;
   
   // UI Configuration

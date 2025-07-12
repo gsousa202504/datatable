@@ -8,7 +8,7 @@ import {
 import { Column } from '@tanstack/react-table';
 import { ArrowDown, ArrowUp, EyeOff, Group, Settings2 } from 'lucide-react';
 
-interface ColumnHeaderProps<TData, TValue> {
+interface IColumnHeaderProps<TData, TValue> {
 	column: Column<TData, TValue>;
 	title: string;
 	enableColumnMenu?: boolean;
@@ -18,7 +18,7 @@ export function ColumnHeader<TData, TValue>({
 	column,
 	title,
 	enableColumnMenu = true,
-}: ColumnHeaderProps<TData, TValue>) {
+}: IColumnHeaderProps<TData, TValue>) {
 	const sorted = column.getIsSorted();
 	const canSort = column.getCanSort();
 	const canGroup = column.getCanGroup();

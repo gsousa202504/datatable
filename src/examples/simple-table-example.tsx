@@ -1,10 +1,10 @@
 import React from 'react';
 import { EnhancedDataTable } from '@/components/data-table/enhanced-data-table';
-import { DataTableColumnConfig } from '@/hooks/use-data-table-columns';
+import { IDataTableColumnConfig } from '@/hooks/use-data-table-columns';
 import { Badge } from '@/components/ui/badge';
 
 // Simple data type
-interface Task {
+interface ITask {
   id: string;
   title: string;
   status: 'todo' | 'in_progress' | 'done';
@@ -14,7 +14,7 @@ interface Task {
 }
 
 // Mock data
-const tasks: Task[] = [
+const tasks: ITask[] = [
   {
     id: '1',
     title: 'Implement user authentication',
@@ -58,7 +58,7 @@ const tasks: Task[] = [
 ];
 
 export function SimpleTableExample() {
-  const columns: DataTableColumnConfig<Task>[] = [
+  const columns: IDataTableColumnConfig<ITask>[] = [
     {
       id: 'title',
       header: 'Título',

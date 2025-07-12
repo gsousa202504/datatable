@@ -3,12 +3,12 @@ import { useCallback } from 'react';
 import * as XLSX from 'xlsx';
 import jsPDF from 'jspdf';
 
-export interface UseDataTableExportProps<TData> {
+export interface IUseDataTableExportProps<TData> {
   table: Table<TData>;
   filename?: string;
 }
 
-export function useDataTableExport<TData>({ table, filename = 'export' }: UseDataTableExportProps<TData>) {
+export function useDataTableExport<TData>({ table, filename = 'export' }: IUseDataTableExportProps<TData>) {
   const getExportData = useCallback(() => {
     const selectedRows = table.getSelectedRowModel().rows;
     const visibleColumns = table.getVisibleLeafColumns().filter(col => col.id !== 'select' && col.id !== 'actions');
